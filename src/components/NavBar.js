@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -12,14 +13,16 @@ const NavBar = () => {
           variant="dark"
           fixed="top"
         >
-          <Navbar.Brand href="#home">Innoevent</Navbar.Brand>
+          <NavLink to="/">
+            <Navbar.Brand href="#home">Innoevent</Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#features">Home</Nav.Link>
-              <Nav.Link href="#pricing">Events</Nav.Link>
-              <Nav.Link>Sign In</Nav.Link>
-              <Nav.Link>Sign Up</Nav.Link>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/events">Events</NavLink>
+              <NavLink to="/signin">Sign In</NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
