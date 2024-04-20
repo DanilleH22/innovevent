@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import { Form, Button, Card, Col, Row, Container, Alert } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import {
+  Form,
+  Button,
+  Card,
+  Col,
+  Row,
+  Container,
+  Alert,
+} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignUpForm.module.css";
 import axios from "axios";
+import { SetCurrentUserContext } from "../../App";
 
 function SignInForm() {
-  //   Add your component logic here
+  const setCurrentUser = useContext(SetCurrentUserContext);
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -16,23 +25,24 @@ function SignInForm() {
 
   const history = useHistory();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setSignInData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/login/", signInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
+  
+  const handleChange = (event) => {
+    setSignInData({
+      ...signInData,
+      [event.target.name]: event.target.value,
+    });
+  };
+  
 
   return (
     <Row className={styles.Row}>
@@ -64,7 +74,9 @@ function SignInForm() {
                       onChange={handleChange}
                     />
                   </Form.Group>
-                  <Button variant="danger" type="submit">Submit</Button>
+                  <Button variant="danger" type="submit">
+                    Submit
+                  </Button>
                   {errors.non_field_errors?.map((message, idx) => (
                     <Alert key={idx} variant="warning" className="mt-3">
                       {message}
