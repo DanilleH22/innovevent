@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignUpForm.module.css";
-// import { Link } from "react-router-dom";
 
 import {
   Form,
@@ -20,7 +19,7 @@ const SignUpForm = () => {
     password1: "",
     password2: "",
   });
-  const { name, password1, password2 } = signUpData;
+  const { username, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
 
@@ -28,12 +27,11 @@ const SignUpForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setSignUpData(prevState => ({
+    setSignUpData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,9 +42,6 @@ const SignUpForm = () => {
       setErrors(err.response?.data);
     }
   };
-  
-  
-
 
   return (
     <Row className={styles.Row}>
@@ -63,7 +58,7 @@ const SignUpForm = () => {
                       type="text"
                       placeholder="Username"
                       name="username"
-                      value={name}
+                      value={username}
                       onChange={handleChange}
                     />
                   </Form.Group>
@@ -108,10 +103,10 @@ const SignUpForm = () => {
                     Sign up
                   </Button>
                   {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
+                    <Alert key={idx} variant="warning" className="mt-3">
+                      {message}
+                    </Alert>
+                  ))}
                 </Form>
               </Card.Text>
             </Card.Body>
