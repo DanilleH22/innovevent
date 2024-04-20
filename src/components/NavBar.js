@@ -63,6 +63,7 @@ const NavBar = () => {
             <Nav className="ml-auto">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/events">Events</NavLink>
+              <NavLink to="/contact_us">Contact us</NavLink>
               {currentUser && addEventIcon}
               {currentUser ? loggedInIcons : loggedOutIcons}
             </Nav>
