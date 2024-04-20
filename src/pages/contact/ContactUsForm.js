@@ -48,81 +48,81 @@ const ContactUsForm = () => {
 
   return (
     <Row className="my-4">
-        <Col>
+      <Col>
         <Container>
-      {showAlert && (
-        <Alert
-          variant="success"
-          onClose={() => setShowAlert(false)}
-          dismissible
-        >
-          {alertMessage}
-        </Alert>
-      )}
-      <Card>
-        <Card.Header className="d-flex justify-content-center">Contact us</Card.Header>
-        <Card.Body>
-          <Card.Text>
-          <form id="contact-form" onSubmit={handleSubmit} method="POST">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter your name here"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address:</label>
-          <input
-            type="email"
-            className="form-control"
-            aria-describedby="emailHelp"
-            placeholder="Enter your email here"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="subject">Subject:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter your subject here"
-            name="subject"
-            value={subject}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            className="form-control"
-            rows="5"
-            placeholder="Enter your message here"
-            name="message"
-            value={message}
-            onChange={handleChange}
-          />
-        </div>
-        
-      </form>
-          </Card.Text>
-          <div className="d-flex justify-content-center">
-          <Button type="submit" className="btn btn-danger">
-            Submit
-          </Button>
-        </div>
-        </Card.Body>
-      </Card>
-    </Container>
-        </Col>
+          {showAlert && (
+            <Alert
+              variant="success"
+              onClose={() => setShowAlert(false)}
+              dismissible
+            >
+              {alertMessage}
+            </Alert>
+          )}
+          <Card>
+            <Card.Header className="d-flex justify-content-center">
+              Contact us
+            </Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <form id="contact-form" onSubmit={handleSubmit} method="POST">
+                  <div className="form-group">
+                    <label htmlFor="name">Name:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your name here"
+                      name="name"
+                      value={name}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Email address:</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter your email here"
+                      name="email"
+                      value={email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="subject">Subject:</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your subject here"
+                      name="subject"
+                      value={subject}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="message">Message:</label>
+                    <textarea
+                      className="form-control"
+                      rows="5"
+                      placeholder="Enter your message here"
+                      name="message"
+                      value={message}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </form>
+              </Card.Text>
+              <div className="d-flex justify-content-center">
+                <Button type="submit" className="btn btn-danger">
+                  Submit
+                </Button>
+              </div>
+            </Card.Body>
+          </Card>
+        </Container>
+      </Col>
     </Row>
-    
   );
 };
 
