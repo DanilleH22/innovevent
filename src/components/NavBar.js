@@ -50,7 +50,7 @@ const NavBar = () => {
           fixed="top"
         >
           <NavLink to="/">
-            <Navbar.Brand href="#home">Innoevent</Navbar.Brand>
+            <Navbar.Brand>Innoevent</Navbar.Brand>
           </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
