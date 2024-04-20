@@ -6,10 +6,13 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const {expanded, setExpanded, ref} = UseClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -40,9 +43,9 @@ const NavBar = () => {
   );
 
   return (
-    <div>
       <Container>
         <Navbar
+          expanded={expanded}
           collapseOnSelect
           expand="md"
           bg="dark"
@@ -52,7 +55,10 @@ const NavBar = () => {
           <NavLink to="/">
             <Navbar.Brand>Innoevent</Navbar.Brand>
           </NavLink>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle 
+          ref={ref}
+          onClick={() => setExpanded(!expanded)} 
+          aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
               <NavLink to="/">Home</NavLink>
@@ -63,7 +69,6 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Navbar>
       </Container>
-    </div>
   );
 };
 
