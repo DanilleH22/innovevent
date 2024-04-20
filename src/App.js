@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import ContactUsForm from "./pages/contact/ContactUsForm";
+import EventCreateForm from "./pages/events/EventCreateForm";
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
           <Route exact path="/" render={() => <h1>Innoevent</h1>} />
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/contact_us" render={() => <ContactUsForm />} />
+          <Route
+            exact
+            path="/events/create"
+            render={() => <EventCreateForm />}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route render={() => <h1>Page not found!</h1>} />
