@@ -36,14 +36,13 @@ function SignInForm() {
       setErrors(err.response?.data);
     }
   };
-  
+
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
     });
   };
-  
 
   return (
     <Row className={styles.Row}>
