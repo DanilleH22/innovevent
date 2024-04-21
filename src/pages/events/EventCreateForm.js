@@ -18,7 +18,7 @@ function EventCreateForm() {
   const history = useHistory();
 
   const handleChange = (event) => {
-    setCreateEventData(prevData => ({
+    setCreateEventData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
     }));
@@ -27,7 +27,7 @@ function EventCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setCreateEventData(prevData => ({
+      setCreateEventData((prevData) => ({
         ...prevData,
         image: URL.createObjectURL(event.target.files[0]),
       }));
@@ -37,12 +37,12 @@ function EventCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-  
+
     formData.append("event_name", event_name);
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
     formData.append("date", date);
-  
+
     try {
       const { data } = await axiosReq.post("/events/create", formData);
       history.push(`/events/${data.id}`);
@@ -67,9 +67,12 @@ function EventCreateForm() {
                 value={event_name}
                 onChange={handleChange}
               />
-              {errors.event_name && errors.event_name.map((message, idx) => (
-                <Alert variant="warning" key={idx}>{message}</Alert>
-              ))}
+              {errors.event_name &&
+                errors.event_name.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
               <Form.Label>Description:</Form.Label>
               <textarea
                 className="form-control"
@@ -78,9 +81,12 @@ function EventCreateForm() {
                 value={description}
                 onChange={handleChange}
               />
-              {errors.description && errors.description.map((message, idx) => (
-                <Alert variant="warning" key={idx}>{message}</Alert>
-              ))}
+              {errors.description &&
+                errors.description.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
               <Form.Label>Date:</Form.Label>
               <Form.Control
                 type="date"
@@ -88,9 +94,12 @@ function EventCreateForm() {
                 value={date}
                 onChange={handleChange}
               />
-              {errors.date && errors.date.map((message, idx) => (
-                <Alert variant="warning" key={idx}>{message}</Alert>
-              ))}
+              {errors.date &&
+                errors.date.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
               <Form.File
                 id="exampleFormControlFile1"
                 accept="image/*"
@@ -98,19 +107,30 @@ function EventCreateForm() {
                 ref={imageInput}
                 onChange={handleChangeImage}
               />
-              {errors.image && errors.image.map((message, idx) => (
-                <Alert variant="warning" key={idx}>{message}</Alert>
-              ))}
+              {errors.image &&
+                errors.image.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
             </Form.Group>
             <div className="text-center">
-              <Button variant="danger" onClick={() => history.goBack()} className="mr-3">Cancel</Button>
-              <Button type="submit" variant="danger">Create</Button>
+              <Button
+                variant="danger"
+                onClick={() => history.goBack()}
+                className="mr-3"
+              >
+                Cancel
+              </Button>
+              <Button type="submit" variant="danger">
+                Create
+              </Button>
             </div>
           </Container>
         </Col>
       </Row>
     </Form>
-  )
+  );
 }
- 
+
 export default EventCreateForm;
