@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 import { Row, Col, Container, Form, Button, Alert } from "react-bootstrap";
 import styles from "../../styles/EventCreateEditForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -9,12 +9,12 @@ function EventCreateForm() {
 
 
   const [createEventData, setCreateEventData] = useState({
-    event: "",
+    event_name: "",
     description: "",
     image: "",
     date: "",
   });
-  const { event, description, image, date } = createEventData;
+  const { event_name, description, image, date } = createEventData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -40,17 +40,13 @@ function EventCreateForm() {
     event.preventDefault();
     const formData = new FormData();
   
-    formData.append("event", event);
+    formData.append("event_name", event_name);
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
     formData.append("date", date);
   
     try {
-      const { data } = await axiosReq.post("/events/", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const { data } = await axiosReq.post("/events/", formData)
       history.push(`/events/${data.id}`);
     } catch (err) {
       console.error(err);
@@ -70,8 +66,8 @@ function EventCreateForm() {
               <Form.Label>Event name:</Form.Label>
               <Form.Control
                 type="text"
-                name="event"
-                value={event}
+                name="event_name"
+                value={event_name}
                 onChange={handleChange}
               />
               {errors.event?.map((message, idx) => (
