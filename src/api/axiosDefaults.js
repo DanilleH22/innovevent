@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "https://innoevent-7b1d2e7d15e7.herokuapp.com/";
-axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.post["Content-Type"] = "Mulitipart/form-data";
 axios.defaults.withCredentials = true;
 
 export const axiosReq = axios.create();
