@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import Events from "./Events";
 
 function EventsDetail() {
   const { id } = useParams();
-  const [, setEventDetails] = useState({ results: [] });
+  const [ eventDetails, setEventDetails] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: eventDetails }] = await Promise.ass([
+        const [{ data: eventDetails }] = await Promise.all([
           axiosReq.get(`/events/${id}`),
         ]);
         setEventDetails({ results: [eventDetails] });
@@ -24,10 +25,9 @@ function EventsDetail() {
   }, [id]);
 
   return (
-    <Row className="h100">
-      <Col className="py-2 p-0 p-lg-2">
-        <h2>Event</h2>
-        <p>Event details.</p>
+    <Row className="h100 d-flex justify-content-center">
+      <Col className="d-flex justify-content-center">
+        <Events {...eventDetails.results[0]} setEventDetails={setEventDetails} EventDetails />
       </Col>
     </Row>
   );
