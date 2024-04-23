@@ -20,7 +20,6 @@ const EventDetails = (props) => {
     <Row>
       <Col>
         <Container>
-          <h1>Events</h1>
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={image} alt={event_name} />
             <Card.Body>
@@ -31,7 +30,7 @@ const EventDetails = (props) => {
               <Link to={`/events/${id}`}>
                 <Card.Text>
                   {description && <p>{description}</p>}
-                  {date && <p>{date}</p>}
+                  {date && <p>Event date: {date}</p>}
                 </Card.Text>
               </Link>
               {isOwner && (
