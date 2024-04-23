@@ -8,6 +8,7 @@ import SignInForm from "./pages/auth/SignInForm";
 import ContactUsForm from "./pages/contact/ContactUsForm";
 import EventCreateForm from "./pages/events/EventCreateForm";
 import EventsDetail from "./pages/events/EventsDetail";
+import Events from "./pages/events/Events";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>Innoevent</h1>} />
-          <Route exact path="/events" render={() => <h1>Events</h1>} />
+          <Route exact path="/events" render={() => <Events />} />
           <Route exact path="/contact_us" render={() => <ContactUsForm />} />
           <Route
             exact
