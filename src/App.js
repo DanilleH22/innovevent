@@ -13,7 +13,6 @@ import EventSignUp from "./pages/events/EventSignUp";
 import Profile from "./pages/profiles/Profile";
 
 function App() {
-  
   return (
     <div className={styles.App}>
       <NavBar />
@@ -28,7 +27,11 @@ function App() {
             render={() => <EventCreateForm />}
           />
           <Route exact path="/events/:id" render={() => <EventsDetail />} />
-          <Route exact path="/events/:id/signup" render={() => <EventSignUp />} />
+          <Route
+            exact
+            path="/events/:id/signup"
+            render={() => <EventSignUp />}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/profiles/:id" render={() => <Profile />} />
