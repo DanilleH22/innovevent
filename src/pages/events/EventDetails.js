@@ -36,7 +36,9 @@ const EventDetails = (props) => {
               {isOwner && (
                 <Button variant="primary" as={Link} to={`/events/edit/${id}`}>Edit</Button>
               )}
-              <Button variant="primary">Sign Up</Button>
+              <Link to={`/events/${id}/signup`}>
+        <Button variant="primary">Sign Up</Button>
+      </Link>
             </Card.Body>
           </Card>
         </Container>
