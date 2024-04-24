@@ -9,6 +9,7 @@ import ContactUsForm from "./pages/contact/ContactUsForm";
 import EventCreateForm from "./pages/events/EventCreateForm";
 import EventsDetail from "./pages/events/EventsDetail";
 import Events from "./pages/events/Events";
+import EventSignUp from "./pages/events/EventSignUp";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             render={() => <EventCreateForm />}
           />
           <Route exact path="/events/:id" render={() => <EventsDetail />} />
+          <Route exact path="/events/:id/signup" render={() => <EventSignUp />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route render={() => <h1>Page not found!</h1>} />
