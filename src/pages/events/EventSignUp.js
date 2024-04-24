@@ -10,7 +10,7 @@ function EventSignUp() {
     name: "",
     email: "",
   });
-  const [signedUp, setSignedUp] = useState(false)
+  const [signedUp, setSignedUp] = useState(false);
   const [errors, setErrors] = useState({});
   // const history = useHistory();
 
@@ -41,6 +41,7 @@ function EventSignUp() {
       setSignedUp(true);
     } catch (err) {
       setErrors("You have already signed up to this event!");
+      console.log("You have already signed up to this event!");
     }
   };
 

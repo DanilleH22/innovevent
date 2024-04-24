@@ -6,7 +6,7 @@ import EventDetails from "./EventDetails";
 
 function EventsDetail() {
   const { id } = useParams();
-  const [ eventDetails, setEventDetails] = useState({ results: [] });
+  const [eventDetails, setEventDetails] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
@@ -27,7 +27,11 @@ function EventsDetail() {
   return (
     <Row className="h100 d-flex justify-content-center">
       <Col className="d-flex justify-content-center">
-        <EventDetails {...eventDetails.results[0]} setEventDetails={setEventDetails} EventDetails />
+        <EventDetails
+          {...eventDetails.results[0]}
+          setEventDetails={setEventDetails}
+          EventDetails
+        />
       </Col>
     </Row>
   );

@@ -14,7 +14,9 @@ function Events({ filter = "" }) {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const { data } = await axiosReq.get(`/events?${filter}&search=${query}`);
+        const { data } = await axiosReq.get(
+          `/events?${filter}&search=${query}`,
+        );
         console.log(data);
         setEvents(data);
         setHasLoaded(true);
