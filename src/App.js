@@ -10,8 +10,10 @@ import EventCreateForm from "./pages/events/EventCreateForm";
 import EventsDetail from "./pages/events/EventsDetail";
 import Events from "./pages/events/Events";
 import EventSignUp from "./pages/events/EventSignUp";
+import Profile from "./pages/profiles/Profile";
 
 function App() {
+  
   return (
     <div className={styles.App}>
       <NavBar />
@@ -29,6 +31,7 @@ function App() {
           <Route exact path="/events/:id/signup" render={() => <EventSignUp />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/profiles/:id" render={() => <Profile />} />
           <Route render={() => <h1>Page not found!</h1>} />
         </Switch>
       </Container>
