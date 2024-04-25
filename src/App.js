@@ -11,6 +11,7 @@ import EventsDetail from "./pages/events/EventsDetail";
 import Events from "./pages/events/Events";
 import EventSignUp from "./pages/events/EventSignUp";
 import Profile from "./pages/profiles/Profile";
+import EditEventForm from "./pages/events/EditEventForm";
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
             exact
             path="/events/:id/signup"
             render={() => <EventSignUp />}
+          />
+          <Route
+            exact
+            path="/events/:id/edit"
+            render={() => <EditEventForm />}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
