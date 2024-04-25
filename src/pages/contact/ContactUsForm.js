@@ -11,8 +11,8 @@ const ContactUsForm = () => {
   });
   const { name, email, subject, message } = contactUsData;
 
-  const [setErrors] = useState({}); // Corrected usage
-  const [alertMessage, setAlertMessage] = useState(""); // Corrected usage
+  const [setErrors] = useState({});
+  const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
   const handleChange = (event) => {
@@ -111,13 +111,13 @@ const ContactUsForm = () => {
                       onChange={handleChange}
                     />
                   </div>
+                  <div className="d-flex justify-content-center">
+      <Button type="submit" className="btn btn-danger">
+        Submit
+      </Button>
+    </div>
                 </form>
               </Card.Text>
-              <div className="d-flex justify-content-center">
-                <Button type="submit" className="btn btn-danger">
-                  Submit
-                </Button>
-              </div>
             </Card.Body>
           </Card>
         </Container>
