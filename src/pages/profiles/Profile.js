@@ -48,7 +48,7 @@ function Profile() {
         {!editing ? (
           <>
             <Card.Text>{profile.biography}</Card.Text>
-            {profile && profile.is_owner &&(
+            {profile && profile.is_owner && (
               <Button variant="primary" onClick={() => setEditing(true)}>
                 Edit Profile
               </Button>
