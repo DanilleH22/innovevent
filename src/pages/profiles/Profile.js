@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 
 function Profile() {
   const { id } = useParams();
-  const [profile, setProfile] = useState({
-    biography: "",
-    owner: id,
-  });
+  const [profile, setProfile] = useState(null);
   const [editing, setEditing] = useState(false);
 
   useEffect(() => {
@@ -23,6 +20,8 @@ function Profile() {
 
     fetchProfile();
   }, [id]);
+
+  if (!profile) return <div>Loading profile...</div>;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -45,13 +44,15 @@ function Profile() {
   return (
     <Card style={{ width: "18rem", margin: "20px" }}>
       <Card.Body>
-        <Card.Title>{profile.owner}</Card.Title>
+        <Card.Title>Profile of {profile.owner}</Card.Title>
         {!editing ? (
           <>
             <Card.Text>{profile.biography}</Card.Text>
-            <Button variant="primary" onClick={() => setEditing(true)}>
-              Edit Profile
-            </Button>
+            {profile && profile.is_owner &&(
+              <Button variant="primary" onClick={() => setEditing(true)}>
+                Edit Profile
+              </Button>
+            )}
           </>
         ) : (
           <Form onSubmit={handleSubmit}>
