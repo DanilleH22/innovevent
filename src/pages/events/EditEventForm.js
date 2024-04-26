@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router";
-import { Row, Col, Container, Form, Button, Alert } from "react-bootstrap";
+import { useHistory, useParams } from "react-router-dom";
+import { Row, Col, Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function EditCreateForm() {
+  const { id } = useParams();
+  const history = useHistory();
   const [errors, setErrors] = useState({});
   const [createEventData, setCreateEventData] = useState({
     event_name: "",
@@ -15,24 +16,28 @@ function EditCreateForm() {
   const { event_name, description, image, date } = createEventData;
 
   const imageInput = useRef(null);
-  const history = useHistory();
-  const { id } = useParams();
-
 
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/events/${id}/`);
-        const { event_name, description, image, date, is_owner } = data;
-
-        is_owner ? setCreateEventData({ event_name, description, image, date }) : history.push("/");
+        if (!data.is_owner) {
+          history.push("/");
+          return;
+        }
+        setCreateEventData({
+          event_name: data.event_name,
+          description: data.description,
+          image: data.image,
+          date: data.date
+        });
       } catch (err) {
         console.log(err);
       }
     };
 
-  handleMount();
-}, [history, id]);
+    handleMount();
+  }, [id, history]);
 
   const handleChange = (event) => {
     setCreateEventData((prevData) => ({
@@ -43,7 +48,6 @@ function EditCreateForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
       setCreateEventData((prevData) => ({
         ...prevData,
         image: URL.createObjectURL(event.target.files[0]),
@@ -58,8 +62,7 @@ function EditCreateForm() {
     formData.append("event_name", event_name);
     formData.append("description", description);
     formData.append("date", date);
-
-    if (imageInput?.current?.files[0]) {
+    if (imageInput.current.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
 
@@ -72,13 +75,18 @@ function EditCreateForm() {
     }
   };
 
-
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="m-4 p-4">
           <Container className="d-flex flex-column justify-content-center text-center">
             <h1>Edit {event_name}</h1>
+            {image && (
+              <div>
+                <Image src={image} thumbnail />
+                <p>Current Image</p>
+              </div>
+            )}
             <Form.Group className="text-center">
               <Form.Label>Event Name:</Form.Label>
               <Form.Control
@@ -123,7 +131,7 @@ function EditCreateForm() {
               <Form.File
                 id="exampleFormControlFile1"
                 accept="image/*"
-                label="Upload an Image"
+                label="Change Image"
                 ref={imageInput}
                 onChange={handleChangeImage}
               />
@@ -135,16 +143,8 @@ function EditCreateForm() {
                 ))}
             </Form.Group>
             <div className="text-center">
-              <Button
-                variant="danger"
-                onClick={() => history.goBack()}
-                className="mr-3"
-              >
-                Cancel
-              </Button>
-              <Button type="submit" variant="danger">
-                Create
-              </Button>
+              <Button variant="danger" onClick={() => history.goBack()} className="mr-3">Cancel</Button>
+              <Button type="submit" variant="danger">Save Changes</Button>
             </div>
           </Container>
         </Col>
@@ -154,4 +154,3 @@ function EditCreateForm() {
 }
 
 export default EditCreateForm;
-
