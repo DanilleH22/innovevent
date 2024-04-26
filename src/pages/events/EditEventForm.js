@@ -2,8 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
+// import useRedirect from "../../hooks/useRedirect"
 
 function EditCreateForm() {
+  // const is_owner = owner;
+  // useRedirect("loggedIn", is_owner)
+
   const { id } = useParams();
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -22,7 +26,7 @@ function EditCreateForm() {
       try {
         const { data } = await axiosReq.get(`/events/${id}/`);
         if (!data.is_owner) {
-          history.push("/");
+          history.push("/not-authorised");
           return;
         }
         setCreateEventData({
