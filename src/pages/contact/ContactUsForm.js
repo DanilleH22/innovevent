@@ -73,6 +73,7 @@ const ContactUsForm = () => {
                     placeholder="Enter your name here"
                     name="name"
                     id="name"
+                    autoComplete="on"
                     value={name}
                     onChange={handleChange}
                   />
@@ -86,6 +87,7 @@ const ContactUsForm = () => {
                     placeholder="Enter your email here"
                     name="email"
                     id="email"
+                    autoComplete="on"
                     value={email}
                     onChange={handleChange}
                   />
