@@ -62,6 +62,7 @@ function EventSignUp() {
           <Form.Control
             type="text"
             name="name"
+            autoComplete="on"
             value={eventSignUpData.name}
             onChange={handleChange}
             isInvalid={!!errors.name}
@@ -75,6 +76,7 @@ function EventSignUp() {
           <Form.Control
             type="email"
             name="email"
+            autoComplete="on"
             value={eventSignUpData.email}
             onChange={handleChange}
             isInvalid={!!errors.email}
