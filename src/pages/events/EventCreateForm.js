@@ -63,10 +63,11 @@ function EventCreateForm() {
             <h1 id={styles.creatingForm}>Create Event</h1>
             <p>Complete the form below to create your event.</p>
             <Form.Group className="text-center">
-              <Form.Label>Event Name:</Form.Label>
+              <Form.Label htmlFor="event_name">Event Name:</Form.Label>
               <Form.Control
                 type="text"
                 name="event_name"
+                id="event_name"
                 value={event_name}
                 onChange={handleChange}
               />
@@ -76,11 +77,12 @@ function EventCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              <Form.Label>Description:</Form.Label>
+              <Form.Label htmlFor="description">Description:</Form.Label>
               <textarea
                 className="form-control"
                 rows="6"
                 name="description"
+                id="description"
                 value={description}
                 onChange={handleChange}
               />
@@ -90,10 +92,11 @@ function EventCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              <Form.Label>Date:</Form.Label>
+              <Form.Label htmlFor="date">Date:</Form.Label>
               <Form.Control
                 type="date"
                 name="date"
+                id="date"
                 value={date}
                 onChange={handleChange}
               />
@@ -104,7 +107,7 @@ function EventCreateForm() {
                   </Alert>
                 ))}
               <Form.File
-                id="exampleFormControlFile1"
+                id="FormControlFile"
                 accept="image/*"
                 label="Upload an Image"
                 ref={imageInput}

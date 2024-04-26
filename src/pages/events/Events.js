@@ -43,6 +43,7 @@ function Events({ filter = "" }) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             type="text"
+            id="search"
             placeholder="Search event"
           />
         </Form>
