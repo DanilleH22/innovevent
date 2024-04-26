@@ -1,13 +1,9 @@
 import React from "react";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const EventDetails = (props) => {
   const { id, is_owner, event_name, date, description, image } = props;
-
-  const currentUser = useCurrentUser();
-  const isOwner = currentUser?.username === is_owner;
 
   return (
     <Row>
@@ -18,24 +14,22 @@ const EventDetails = (props) => {
             <Card.Body>
               <Card.Title>{event_name}</Card.Title>
               <Card.Text>
-                <p>
-                  By <strong>Owner</strong>
-                </p>
+                <p>Description: {description}</p>
+                <p>Event date: {date}</p>
               </Card.Text>
-              <Link to={`/events/${id}`}>
-                <Card.Text>
-                  {description && <p>{description}</p>}
-                  {date && <p>Event date: {date}</p>}
-                </Card.Text>
-              </Link>
-              {isOwner && (
-                <Button variant="primary" as={Link} to={`/events/edit/${id}`}>
-                  Edit
-                </Button>
+              <Button variant="primary" as={Link} to={`/events/${id}`}>
+                View more
+              </Button>
+              {is_owner && (
+                <>
+                  <Button variant="primary" as={Link} to={`/events/${id}/edit`}>
+                    Edit
+                  </Button>
+                </>
               )}
-              <Link to={`/events/${id}/signup`}>
-                <Button variant="primary">Sign Up</Button>
-              </Link>
+              <Button variant="primary" as={Link} to={`/events/${id}/signup`}>
+                Sign Up
+              </Button>
             </Card.Body>
           </Card>
         </Container>
