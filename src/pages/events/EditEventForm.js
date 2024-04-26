@@ -2,22 +2,19 @@ import React, { useState, useRef, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
-// import useRedirect from "../../hooks/useRedirect"
 
 function EditCreateForm() {
-  // const is_owner = owner;
-  // useRedirect("loggedIn", is_owner)
 
   const { id } = useParams();
   const history = useHistory();
   const [errors, setErrors] = useState({});
-  const [createEventData, setCreateEventData] = useState({
+  const [editEventData, setEditEventData] = useState({
     event_name: "",
     description: "",
     image: "",
     date: "",
   });
-  const { event_name, description, image, date } = createEventData;
+  const { event_name, description, image, date } = editEventData;
 
   const imageInput = useRef(null);
 
@@ -29,7 +26,7 @@ function EditCreateForm() {
           history.push("/not-authorised");
           return;
         }
-        setCreateEventData({
+        setEditEventData({
           event_name: data.event_name,
           description: data.description,
           image: data.image,
@@ -44,7 +41,7 @@ function EditCreateForm() {
   }, [id, history]);
 
   const handleChange = (event) => {
-    setCreateEventData((prevData) => ({
+    setEditEventData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
     }));
@@ -52,7 +49,7 @@ function EditCreateForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      setCreateEventData((prevData) => ({
+      setEditEventData((prevData) => ({
         ...prevData,
         image: URL.createObjectURL(event.target.files[0]),
       }));
@@ -70,6 +67,7 @@ function EditCreateForm() {
       formData.append("image", imageInput.current.files[0]);
     }
 
+
     try {
       await axiosReq.put(`/events/${id}/`, formData);
       history.push(`/events/${id}`);
@@ -78,6 +76,19 @@ function EditCreateForm() {
       setErrors(err.response?.data);
     }
   };
+
+  const deleteEvent = async () => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      try {
+        await axiosReq.delete(`/events/${id}/`);
+        history.push('/');
+      } catch (err) {
+        console.error("Error deleting event", err);
+        setErrors(err.response?.data);
+      }
+    }
+  };
+  
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -92,10 +103,11 @@ function EditCreateForm() {
               </div>
             )}
             <Form.Group className="text-center">
-              <Form.Label>Event Name:</Form.Label>
+              <Form.Label htmlFor="event_name">Event Name:</Form.Label>
               <Form.Control
                 type="text"
                 name="event_name"
+                id="event_name"
                 value={event_name}
                 onChange={handleChange}
               />
@@ -105,11 +117,12 @@ function EditCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              <Form.Label>Description:</Form.Label>
+              <Form.Label htmlFor="description">Description:</Form.Label>
               <textarea
                 className="form-control"
                 rows="6"
                 name="description"
+                id="description"
                 value={description}
                 onChange={handleChange}
               />
@@ -119,10 +132,11 @@ function EditCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              <Form.Label>Date:</Form.Label>
+              <Form.Label htmlFor="date">Date:</Form.Label>
               <Form.Control
                 type="date"
                 name="date"
+                id="date"
                 value={date}
                 onChange={handleChange}
               />
@@ -149,6 +163,7 @@ function EditCreateForm() {
             <div className="text-center">
               <Button variant="danger" onClick={() => history.goBack()} className="mr-3">Cancel</Button>
               <Button type="submit" variant="danger">Save Changes</Button>
+              <Button variant="danger" onClick={deleteEvent} className="ml-3">Delete</Button>
             </div>
           </Container>
         </Col>
