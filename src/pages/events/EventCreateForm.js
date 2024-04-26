@@ -3,8 +3,10 @@ import { useHistory } from "react-router";
 import { Row, Col, Container, Form, Button, Alert } from "react-bootstrap";
 import styles from "../../styles/EventCreateEditForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function EventCreateForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
   const [createEventData, setCreateEventData] = useState({
     event_name: "",

@@ -11,11 +11,14 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignUpForm.module.css";
 import axios from "axios";
+import { useRedirect } from "../../hooks/useRedirect"
 
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
+  useRedirect('loggedIn')
+
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -31,7 +34,7 @@ function SignInForm() {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      history.push("/");
+      history.goBack()
     } catch (err) {
       setErrors(err.response?.data);
     }
