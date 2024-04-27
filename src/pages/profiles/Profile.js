@@ -66,11 +66,11 @@ function Profile() {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Button variant="success" type="submit">
+            <Button variant="danger" type="submit">
               Save Changes
             </Button>
             <Button
-              variant="secondary"
+              variant="danger"
               onClick={() => setEditing(false)}
               style={{ marginLeft: "10px" }}
             >
