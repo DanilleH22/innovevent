@@ -12,6 +12,7 @@ import Events from "./pages/events/Events";
 import EventSignUp from "./pages/events/EventSignUp";
 import Profile from "./pages/profiles/Profile";
 import EditEventForm from "./pages/events/EditEventForm";
+import Homepage from "./pages/homepage/Homepage"
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Innoevent</h1>} />
+          <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/events" render={() => <Events />} />
           <Route exact path="/contact_us" render={() => <ContactUsForm />} />
           <Route
