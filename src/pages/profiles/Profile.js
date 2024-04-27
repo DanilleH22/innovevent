@@ -42,14 +42,14 @@ function Profile() {
   };
 
   return (
-    <Card style={{ width: "18rem", margin: "20px" }}>
-      <Card.Body>
+    <Card className="d-flex justify-content-center mt-4 border-0">
+      <Card.Body className="text-center">
         <Card.Title>Profile of {profile.owner}</Card.Title>
         {!editing ? (
           <>
             <Card.Text>{profile.biography}</Card.Text>
             {profile && profile.is_owner && (
-              <Button variant="primary" onClick={() => setEditing(true)}>
+              <Button variant="danger" onClick={() => setEditing(true)}>
                 Edit Profile
               </Button>
             )}
