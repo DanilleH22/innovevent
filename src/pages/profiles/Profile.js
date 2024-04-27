@@ -70,7 +70,7 @@ function Profile() {
               Save Changes
             </Button>
             <Button
-              variant="danger"
+              variant="secondary"
               onClick={() => setEditing(false)}
               style={{ marginLeft: "10px" }}
             >
