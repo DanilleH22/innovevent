@@ -54,8 +54,8 @@ function EventSignUp() {
   }
 
   return (
-    <div className="event-sign-up-form">
-      <h1>Sign Up for {eventDetails.event_name}</h1>
+    <div className="signUp">
+      <h1 className="text-center">Sign Up for {eventDetails.event_name}</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
           <Form.Label>Name:</Form.Label>
@@ -85,7 +85,9 @@ function EventSignUp() {
             {errors.email && errors.email[0]}
           </Form.Control.Feedback>
         </Form.Group>
-        <Button variant="danger" type="submit">
+        <Button 
+        variant="danger" 
+        type="submit">
           Sign Up
         </Button>
       </Form>
