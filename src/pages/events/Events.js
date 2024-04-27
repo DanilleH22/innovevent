@@ -34,11 +34,10 @@ function Events({ filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className="h-100">
+    <Row className="h-100 ">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <h1>Events</h1>
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <Form onSubmit={(event) => event.preventDefault()}>
+        <h1 className="text-center/">Events</h1>
+        <Form onSubmit={(event) => event.preventDefault()} className="mb-4">
           <Form.Control
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -47,28 +46,36 @@ function Events({ filter = "" }) {
             placeholder="Search event"
           />
         </Form>
+      </Col>
 
-        {hasLoaded ? (
-          events.results.length ? (
-            events.results.map((event) => (
-              <EventDetails key={event.id} {...event} setEvents={setEvents} />
-            ))
-          ) : (
-            <Container>
-              <p>
-                No event has been found with that name, please try again with
-                another keyword.
-              </p>
-            </Container>
-          )
+      {hasLoaded ? (
+        events.results.length ? (
+          <Row lg={3} md={2}>
+            {events.results.map((event) => (
+              <Row>
+                <EventDetails key={event.id} {...event} setEvents={setEvents} />
+              </Row>
+            ))}
+          </Row>
         ) : (
           <Container>
-            <Spinner animation="border" role="status">
-              <span className="sr-only">Loading...</span>
-            </Spinner>
+            <p>
+              No event has been found with that name, please try again with
+              another keyword.
+            </p>
           </Container>
-        )}
-      </Col>
+        )
+      ) : (
+        <Container>
+          <Spinner
+            animation="border"
+            role="status"
+            className="d-flex justify-content-center"
+          >
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </Container>
+      )}
     </Row>
   );
 }
