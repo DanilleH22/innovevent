@@ -15,11 +15,11 @@ const EventDetails = (props) => {
           <Card.Text>Description: {description}</Card.Text>
           <Card.Text>Event date: {date}</Card.Text>
           {is_owner && (
-            <Button variant="primary" as={Link} to={`/events/${id}/edit`} className="mr-3">
+            <Button variant="danger" as={Link} to={`/events/${id}/edit`} className="mr-3">
               Edit
             </Button>
           )}
-          <Button variant="primary" as={Link} to={`/events/${id}/signup`}>
+          <Button variant="danger" as={Link} to={`/events/${id}/signup`}>
             Sign Up
           </Button>
         </Card.Body>
