@@ -164,20 +164,17 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 ## Testing
 
 ### Manual Testing:
-1. SignUpForm gives 400 error:
- - Resolved by changing `password` to `password1` in form fields & variable keys.
-2. 500 server error:
- - Resolved with the aid of tutor support. All database migrations for both the Django project & apps needed to be cleared & remigrated. The precise steps for this have been documented in the README for the deployed backend API.
-3. CRUD functionality has been tested for each of the following: Posts | Articles | Events | Comments | Likes | Follow | Profile
- - Likes & Follow may only be created & deleted
- - Profile may only be updated
-4. All nav links open to the correct page.
-5. All external links open to a new browser window.
-6. Pages intended for logged-in users only will redirect logged-out users back to the home page.
-7. Users attempting to edit content that they did not publish are redirected back to the home page.
-8. Users are able to create a new account.
-9. Users with an existing account are able to log in.
-10. Each user has the ability to log out.
+1. Test users can sign up for an account.
+2. Test users can sign out
+3. Test users can sign in if they have already created a account.
+4. Events page can be viewed when not logged in but if you want to sign up you are redirected to the sign in page
+4. Contact us form works even if not signed in and signed in.
+5. Only logged in users can create a event.
+6. Only the owner of the event can edit or delete the event.
+7. Only the profile owner can update their biography.
+8. All nav links open to the correct page.
+9. CRUD functionality has been tested for Events
+
 
 ### Validator Testing
 1. CSS files pass through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) with no issues found.
