@@ -1,19 +1,19 @@
-# Innvovent 
+# Innovevent 
 
 Innoevent is a tech networking platform designed to connect professionals across the technology industry. Our mission is to facilitate meaningful interactions and opportunities for collaboration by hosting a wide range of tech events, from workshops and webinars to full-scale conferences. Event organisers are able to share there event with people all accrross the world.
 
 - The repository for the DRF-API associated with this project is available [HERE](https://github.com/DanilleH22/innoevent-drf-api). The installation, set up, and deployment steps for this section of the project have also been included in the README linked to the DRF-API. 
 
-#### DEPLOYED BACKEND API RENDER [LINK](https://innoevent-7b1d2e7d15e7.herokuapp.com/)
-#### DEPLOYED FRONTEND RENDER [LINK - LIVE SITE](https://innoevent-react-93e74f3a4351.herokuapp.com/)
+#### DEPLOYED BACKEND API[LINK](https://innoevent-7b1d2e7d15e7.herokuapp.com/)
+#### DEPLOYED FRONTEND [LINK - LIVE SITE](https://innoevent-react-93e74f3a4351.herokuapp.com/)
 #### DEPLOYED BACKEND GITHUB [REPOSITORY](https://github.com/DanilleH22/innoevent-drf-api)
 
-![Site view across devices](src/assets/images-readme/readme-amiresponsive.png)
+![Site view across devices](src/assets/readme/amiresponsive-p5.png)
 
-The live link for "The Red Crayon" can be found [HERE](https://project5-red-crayon.onrender.com)
+The live link for "Innovevent" can be found [HERE](https://innoevent-react-93e74f3a4351.herokuapp.com/)
 
 ## Table of Contents
-+ [UX](#ux "UX")
++ [UX](#ux "UX") 
   + [Site Purpose](#site-purpose "Site Purpose")
   + [Site Goal](#site-goal "Site Goal")
   + [Audience](#audience "Audience")
@@ -96,11 +96,11 @@ I have included links to the [GitHub Issues](https://github.com/DanilleH22/innov
 ![Site Navigation](src/assets/images-readme/readme-wireframe-sitenav.png)
 
 ### Database Schema:
-This has been uploaded to the Backend README, which can be found [HERE](https://github.com/CluelessBiker/project5-drf-api).
+This has been uploaded to the Backend README, which can be found [HERE](https://github.com/DanilleH22/innoevent-drf-api).
 
 ### Colour Scheme:
 
-![Colour Palette](src/assets/images-readme/readme-colourpalette.png)
+I have used the bootstrap variant 'dark' for the navigation bar. For the buttons I have used the variant 'red'. These two colours together give a technology feel to the website
 
 ### Typography:
 All fonts were obtained from the Google Fonts library. I chose the following fonts for the page:
@@ -110,63 +110,56 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 
 ### Existing Features:
 
-#### Header:
-
-![Header](src/assets/images-readme/readme-header.png)
 
 ##### Navigation - Desktop:
 
-![Navbar desktop](src/assets/images-readme/readme-navigation-desktop.png)
+![Navbar desktop](src/assets/readme/laptop-nav.png)
 
 ##### Navigation - Mobile:
 
-![Navbar mobile](src/assets/images-readme/readme-navigation-tablet-mobile.png)
+![Navbar mobile](src/assets/readme/mobile-nav.png)
 
-#### About Page:
+#### Events Page:
 
-![About Page](src/assets/images-readme/readme-about.png)
+![Events Page](src/assets/readme/events.png)
 
-#### Articles Page:
+#### Edit / Delete Page:
 
-![Articles Page](src/assets/images-readme/readme-articles.png)
+![Edit / Delete Page:](src/assets/readme/edit-delete.png)
 
-#### Submission Form:
+#### Create event Form:
 
-![Submission Form](src/assets/images-readme/readme-forms.png)
+![Create event Form](src/assets/readme/create-event.png)
 
-#### 404 Page Not Found:
+#### Contact us Form:
 
-![404 Page Not Found](src/assets/images-readme/readme-notfound.png)
+![Contact us Form](src/assets/readme/contact-us.png)
 
-#### Popular Profiles:
+#### Profile:
 
-![Popular Profiles](src/assets/images-readme/readme-populareprofiles.png)
+![Profile](src/assets/readme/profile.png)
 
-#### Social Links:
+#### Sign Up For Event:
 
-![Social Links](src/assets/images-readme/readme-sociallinks.png)
+![Social Links](src/assets/readme/sign-up.png)
 
-#### Log in, Log out & Sign up:
+#### Log in & Sign up:
 
 ##### Login:
 
-![Login](src/assets/images-readme/readme-login.png)
+![Login](src/assets/readme/sign-in.png)
 
-##### Logout:
-
-![Logout](src/assets/images-readme/readme-logout.png)
 
 ##### Sign-up:
 
-![Sign-up](src/assets/images-readme/readme-signup.png)
+![Sign-up](src/assets/readme/sign-up-auth.png)
 
 ### Features Left to Implement:
 - See events signed up for in profile
 - See events created in profile
 - Add pictures to the profile
 - Organisers can put a video instaed of photo as the thumbnail
-
-
+- Add social media links for footer
 
 ## Testing
 
@@ -218,9 +211,8 @@ To my knowledge there are not known bigs that have been left.
 - Google Fonts : For the site fonts.
 - GitPod : To build the project & create the JSX & CSS files before pushing the project to Github.
 - GitHub : To store my repository for submission.
-- Balsamiq : Was used to create mockups of the project prior to starting.
+- Figma : Was used to create mockups of the project prior to starting.
 - Am I Responsive? : To ensure the project looked good across all devices.
-- Favicon : To provide the code & image for the icon in the tab bar.
 - Django : Used to build the backend database that serves as an API for the front-end project.
 - React-Bootstrap : The styling library that has aided to the layout of the site, and which was introduced to us during the course of the program.
 - DrawSQL : An interactive tool that allows for the creation of Database mock-ups so that we can visualise the relationships between models.
@@ -281,6 +273,7 @@ web: serve -s build
 
 ### Content
 - Code Institute: The creation of the project came to life by utilising the Moments walkthrough step-by-step as a base foundation, and then building upon it to make the project my own. This is evident from the numerous docstrings within my files crediting the walkthrough.
+- My Mentor Lauren for the layout needed for my README
 
 ### Media
 - Images for the Articles, Events & Posts made on the site have been accumulated from Pexels
