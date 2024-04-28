@@ -53,7 +53,7 @@ const NavBar = () => {
         fixed="top"
       >
         <NavLink to="/">
-          <Navbar.Brand>Innoevent</Navbar.Brand>
+          <Navbar.Brand>Innovevent</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
           ref={ref}

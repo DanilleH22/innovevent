@@ -18,7 +18,7 @@ const Homepage = () => {
     <Container fluid="md">
       <Row className="my-4">
         <Col className="text-center">
-          <h1>Innoevent</h1>
+          <h1>Innovevent</h1>
           <h5>Bringing events to you!</h5>
         </Col>
       </Row>
