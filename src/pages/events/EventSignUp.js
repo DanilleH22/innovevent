@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Form, Button, Alert } from "react-bootstrap";
 
+/**
+ * Render Event details and sign up to event
+ */
 function EventSignUp() {
   const { id } = useParams();
   const [eventDetails, setEventDetails] = useState({});
@@ -12,8 +15,10 @@ function EventSignUp() {
   });
   const [signedUp, setSignedUp] = useState(false);
   const [errors, setErrors] = useState({});
-  // const history = useHistory();
 
+  /**
+ * Populate event details with Id
+ */
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
@@ -34,6 +39,9 @@ function EventSignUp() {
     }));
   };
 
+   /**
+   * Push inputted sign up data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

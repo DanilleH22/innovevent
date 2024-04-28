@@ -3,6 +3,9 @@ import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 
+/**
+   * Populate CreateForm data for editing and deleting
+   */
 function EditCreateForm() {
 
   const { id } = useParams();
@@ -55,7 +58,9 @@ function EditCreateForm() {
       }));
     }
   };
-
+  /**
+   * Submit data on editing form 
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -77,6 +82,9 @@ function EditCreateForm() {
     }
   };
 
+  /**
+   * Delete Event and data
+   */
   const deleteEvent = async () => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {

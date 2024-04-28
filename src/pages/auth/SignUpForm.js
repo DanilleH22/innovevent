@@ -14,6 +14,10 @@ import {
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+   * Sign up for website
+   */
+
 const SignUpForm = () => {
   useRedirect('loggedIn')
   const [signUpData, setSignUpData] = useState({
@@ -34,6 +38,9 @@ const SignUpForm = () => {
       [name]: value,
     }));
   };
+  /**
+   * When sign up complete re direct to sign in page
+   */
 
   const handleSubmit = async (event) => {
     event.preventDefault();

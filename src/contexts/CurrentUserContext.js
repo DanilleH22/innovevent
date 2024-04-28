@@ -3,6 +3,10 @@ import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router";
 
+/**
+ * Determin logged-in status.
+ * The variables & function code were provided in Moments walkthrough.
+ */
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 

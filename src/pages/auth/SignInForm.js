@@ -15,6 +15,9 @@ import { useRedirect } from "../../hooks/useRedirect"
 
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
+/**
+   * Sign in for website
+   */
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   useRedirect('loggedIn')

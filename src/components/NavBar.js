@@ -8,12 +8,18 @@ import {
 import axios from "axios";
 import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
 
+/**
+ * Navigation bar.
+ */
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
   const { expanded, setExpanded, ref } = UseClickOutsideToggle();
 
+  /**
+   * Sign out user out from API.
+   */
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");

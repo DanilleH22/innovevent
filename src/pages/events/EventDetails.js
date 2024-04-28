@@ -2,6 +2,10 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+/**
+   * Populate event details with information given from 
+   * eventCreateForm
+   */
 const EventDetails = (props) => {
   const { id, is_owner, event_name, date, description, image } = props;
 

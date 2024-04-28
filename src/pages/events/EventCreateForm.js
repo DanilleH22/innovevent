@@ -5,6 +5,9 @@ import styles from "../../styles/EventCreateEditForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+   * Create a event and push to API
+   */
 function EventCreateForm() {
   useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
@@ -36,6 +39,10 @@ function EventCreateForm() {
     }
   };
 
+/**
+   * On submit push all information given to API
+   * Redirect to Events page
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Container, Alert, Card, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
+/**
+   * Send API contact us information
+   */
 const ContactUsForm = () => {
   const [contactUsData, setContactUsData] = useState({
     name: "",
@@ -23,6 +26,9 @@ const ContactUsForm = () => {
     }));
   };
 
+  /**
+   * Reset form when submitted
+   */
   const resetForm = () => {
     setContactUsData({
       name: "",
@@ -32,6 +38,9 @@ const ContactUsForm = () => {
     });
   };
 
+  /**
+   * Submit form and alert user of it
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

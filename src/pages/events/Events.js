@@ -4,6 +4,10 @@ import { Row, Col, Container, Spinner, Form } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import EventDetails from "./EventDetails";
 
+/**
+   * List event details on page 
+   */
+
 function Events({ filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -11,6 +15,9 @@ function Events({ filter = "" }) {
 
   const [query, setQuery] = useState("");
 
+  /**
+   * Fetech events based on name - search
+   */
   useEffect(() => {
     const fetchEvents = async () => {
       try {

@@ -3,10 +3,18 @@ import { Button, Card, Form } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+/**
+ * Render profile
+ */
+
 function Profile() {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
   const [editing, setEditing] = useState(false);
+
+  /**
+   * Populate profile data from id
+   */
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -31,6 +39,9 @@ function Profile() {
     }));
   };
 
+ /**
+   * Push inputted biography data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

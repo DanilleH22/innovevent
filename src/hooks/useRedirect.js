@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-
+/**
+ * Redirect users if not logged in 
+ * Redirect users if not authorrised to find that page
+ * Variables & function code provided in Moments walkthrough.
+ */
 export const useRedirect = (userAuthStatus) => {
   const history = useHistory();
 
