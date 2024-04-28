@@ -34,9 +34,9 @@ function Events({ filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className="h-100 ">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <h1 className="text-center/">Events</h1>
+    <Row className="justify-content-center">
+      <Col xs={12} sm={10} md={8} lg={6} className="py-2 px-0 px-lg-2">
+        <h1 className="text-center">Events</h1>
         <Form onSubmit={(event) => event.preventDefault()} className="mb-4">
           <Form.Control
             value={query}
@@ -50,15 +50,22 @@ function Events({ filter = "" }) {
 
       {hasLoaded ? (
         events.results.length ? (
-          <Row lg={3} md={2}>
+          <Row className="w-100 justify-content-center">
             {events.results.map((event) => (
-              <Row>
-                <EventDetails key={event.id} {...event} setEvents={setEvents} />
-              </Row>
+              <Col
+                key={event.id}
+                lg={4}
+                md={6}
+                sm={8}
+                xs={12}
+                className="mb-4 d-flex align-items-stretch"
+              >
+                    <EventDetails {...event} setEvents={setEvents} />
+              </Col>
             ))}
           </Row>
         ) : (
-          <Container>
+          <Container className="text-center">
             <p>
               No event has been found with that name, please try again with
               another keyword.
@@ -66,12 +73,8 @@ function Events({ filter = "" }) {
           </Container>
         )
       ) : (
-        <Container>
-          <Spinner
-            animation="border"
-            role="status"
-            className="d-flex justify-content-center"
-          >
+        <Container className="text-center">
+          <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
         </Container>
