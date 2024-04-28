@@ -6,12 +6,12 @@ import {
   Card,
   Button,
   Carousel,
-  Link,
 } from "react-bootstrap";
 import Network from "../../assets/network.png";
 import Networking2 from "../../assets/networking2.png";
 import Networking3 from "../../assets/networking3.png";
 import styles from "../../App.module.css";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
