@@ -79,21 +79,21 @@ I have included links to the [GitHub Issues](https://github.com/DanilleH22/innov
 
 ### Wireframes:
 
-##### Home Page - Desktop: 
+Listed below is the simple layout I had created for how the pages should look
 
-![Desktop Home](src/assets/images-readme/readme-wireframe-home.png)
+##### Event Detail Page - Desktop: 
 
-##### Home Page - Mobile: 
+![Event Detail Page ](src/assets/readme/event-details-wf.png)
 
-![Desktop Mobile](src/assets/images-readme/readme-wireframe-mobile.png)
+##### Profile Page - Mobile: 
+
+![Profile Page](src/assets/readme/profiles-wf.png)
 
 ##### Form Page:
 
-![Form Page](src/assets/images-readme/readme-wireframe-form.png)
+![Form Page](src/assets/readme/forms-wf.png)
 
-##### Site Navigation:
 
-![Site Navigation](src/assets/images-readme/readme-wireframe-sitenav.png)
 
 ### Database Schema:
 This has been uploaded to the Backend README, which can be found [HERE](https://github.com/DanilleH22/innoevent-drf-api).
