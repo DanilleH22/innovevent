@@ -179,13 +179,11 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 ### Validator Testing
 1. CSS files pass through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) with no issues found.
 
-![Jigsaw validator message](src/assets/images-readme/readme-w3c.png)
 
 2.  Javascript files has been passed through [ESLint](https://eslint.org/). To my knowledge there are no known ESLint errors as none have been raised.
 
 3. The page has an excellent Accessibility rating in Lighthouse:
 
-![Accessibility score](src/assets/images-readme/readme-lighthouse.png)
 
 4. Tested the site opens in Brave, Chrome, Safari & on a mobile device without issues.
 
