@@ -105,8 +105,3 @@ function EventSignUp() {
 
 export default EventSignUp;
 
-// {errors.username?.map((message, idx) => (
-//   <Alert variant="warning" key={idx}>
-//     {message}
-//   </Alert>
-// ))}
