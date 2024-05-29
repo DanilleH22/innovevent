@@ -15,7 +15,7 @@ function EventSignUp() {
   });
   const [signedUp, setSignedUp] = useState(false);
   const [alreadySignedUp, setAlreadySignedUp] = useState(false);
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState({});
   const [showAlert, setShowAlert] = useState(true);
 
   /**
@@ -46,16 +46,28 @@ function EventSignUp() {
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const newErrors = {};
+    if (!eventSignUpData.name) newErrors.name = "Name is required";
+    if (!eventSignUpData.email) newErrors.email = "Email is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
       await axiosReq.post(`/events/${id}/signup/`, eventSignUpData);
       setSignedUp(true);
       setAlreadySignedUp(false);
+      setShowAlert(true);
     } catch (err) {
       if (err.response && err.response.status === 409) {
         setAlreadySignedUp(true);
         setSignedUp(false);
+        setShowAlert(true);
       } else {
-        setErrors("An error occurred. Please try again later.");
+        setErrors({ form: "An error occurred. Please try again later." });
         console.log(err);
       }
     }
@@ -73,9 +85,9 @@ function EventSignUp() {
           You have already signed up for {eventDetails.event_name}.
         </Alert>
       )}
-      {errors && showAlert && (
+      {errors.form && showAlert && (
         <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
-          {errors}
+          {errors.form}
         </Alert>
       )}
       <h1 className="text-center">Sign Up for {eventDetails.event_name}</h1>
@@ -91,7 +103,7 @@ function EventSignUp() {
             isInvalid={!!errors.name}
           />
           <Form.Control.Feedback type="invalid">
-            {errors.name && errors.name[0]}
+            {errors.name}
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="email">
@@ -105,7 +117,7 @@ function EventSignUp() {
             isInvalid={!!errors.email}
           />
           <Form.Control.Feedback type="invalid">
-            {errors.email && errors.email[0]}
+            {errors.email}
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="danger" type="submit">
