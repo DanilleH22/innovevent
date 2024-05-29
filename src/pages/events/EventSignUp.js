@@ -14,11 +14,13 @@ function EventSignUp() {
     email: "",
   });
   const [signedUp, setSignedUp] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [alreadySignedUp, setAlreadySignedUp] = useState(false);
+  const [errors, setErrors] = useState("");
+  const [showAlert, setShowAlert] = useState(true);
 
   /**
- * Populate event details with Id
- */
+   * Populate event details with Id
+   */
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
@@ -39,7 +41,7 @@ function EventSignUp() {
     }));
   };
 
-   /**
+  /**
    * Push inputted sign up data to API.
    */
   const handleSubmit = async (event) => {
@@ -47,22 +49,35 @@ function EventSignUp() {
     try {
       await axiosReq.post(`/events/${id}/signup/`, eventSignUpData);
       setSignedUp(true);
+      setAlreadySignedUp(false);
     } catch (err) {
-      setErrors("You have already signed up to this event!");
-      console.log("You have already signed up to this event!");
+      if (err.response && err.response.status === 409) {
+        setAlreadySignedUp(true);
+        setSignedUp(false);
+      } else {
+        setErrors("An error occurred. Please try again later.");
+        console.log(err);
+      }
     }
   };
 
-  if (signedUp) {
-    return (
-      <Alert variant="success" dismissible>
-        You have successfully signed up for {eventDetails.event_name}.
-      </Alert>
-    );
-  }
-
   return (
     <div className="signUp">
+      {signedUp && showAlert && (
+        <Alert variant="success" dismissible onClose={() => setShowAlert(false)}>
+          You have successfully signed up for {eventDetails.event_name}.
+        </Alert>
+      )}
+      {alreadySignedUp && showAlert && (
+        <Alert variant="warning" dismissible onClose={() => setShowAlert(false)}>
+          You have already signed up for {eventDetails.event_name}.
+        </Alert>
+      )}
+      {errors && showAlert && (
+        <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
+          {errors}
+        </Alert>
+      )}
       <h1 className="text-center">Sign Up for {eventDetails.event_name}</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
@@ -93,9 +108,7 @@ function EventSignUp() {
             {errors.email && errors.email[0]}
           </Form.Control.Feedback>
         </Form.Group>
-        <Button 
-        variant="danger" 
-        type="submit">
+        <Button variant="danger" type="submit">
           Sign Up
         </Button>
       </Form>
@@ -104,4 +117,3 @@ function EventSignUp() {
 }
 
 export default EventSignUp;
-
