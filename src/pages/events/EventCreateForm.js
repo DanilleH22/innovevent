@@ -6,10 +6,10 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 /**
-   * Create a event and push to API
-   */
+ * Create a event and push to API
+ */
 function EventCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [createEventData, setCreateEventData] = useState({
     event_name: "",
@@ -39,7 +39,7 @@ function EventCreateForm() {
     }
   };
 
-/**
+  /**
    * On submit push all information given to API
    * Redirect to Events page
    */
@@ -69,6 +69,17 @@ function EventCreateForm() {
           <Container className="d-flex flex-column justify-content-center text-center">
             <h1 id={styles.creatingForm}>Create Event</h1>
             <p>Complete the form below to create your event.</p>
+            {Object.keys(errors).length > 0 && (
+              <div className="mb-3">
+                {Object.entries(errors).map(([fieldName, messages]) =>
+                  messages.map((message, idx) => (
+                    <Alert variant="warning" key={`${fieldName}-${idx}`}>
+                      {message}
+                    </Alert>
+                  )),
+                )}
+              </div>
+            )}
             <Form.Group className="text-center">
               <Form.Label htmlFor="event_name">Event Name:</Form.Label>
               <Form.Control
@@ -113,14 +124,17 @@ function EventCreateForm() {
                     {message}
                   </Alert>
                 ))}
+              {/* <Form.Label htmlFor="image">Upload a image:</Form.Label> */}
               <Form.File
                 id="FormControlFile"
                 accept="image/*"
-                label="Upload an Image"
+                label="Upload an Image:"
                 ref={imageInput}
                 onChange={handleChangeImage}
+                
               />
               {errors.image &&
+                Array.isArray(errors.image) &&
                 errors.image.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
