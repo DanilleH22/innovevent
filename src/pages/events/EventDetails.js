@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
+import styles from "../../styles/EventDetails.module.css"
 
 /**
  * Populate event details with information given from
@@ -36,7 +36,7 @@ const EventDetails = (props) => {
             variant="top"
             src={image}
             alt={event_name}
-            className="h-50"
+            className={styles.cardTop}
           />
           <Card.Body>
             <Card.Title>{event_name}</Card.Title>
@@ -63,16 +63,19 @@ const EventDetails = (props) => {
                 </div>
               </>
             )}
-                        {currentUser && (
-                          <>
-              <div className="text-center">
-              <Button variant="danger" as={Link} to={`/events/${id}/signup`}>
-                Sign Up
-              </Button>
-              </div>
+            {currentUser && (
+              <>
+                <div className="text-center">
+                  <Button
+                    variant="danger"
+                    as={Link}
+                    to={`/events/${id}/signup`}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
               </>
             )}
-          
           </Card.Body>
         </Card>
       </Col>
