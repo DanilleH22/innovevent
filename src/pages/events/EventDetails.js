@@ -3,6 +3,7 @@ import { Row, Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 
 /**
@@ -13,6 +14,7 @@ const EventDetails = (props) => {
   const { id, is_owner, event_name, date, description, image } = props;
   const history = useHistory();
   const [setErrors] = useState({});
+  const currentUser = useCurrentUser();
 
   const deleteEvent = async () => {
     if (window.confirm("Are you sure you want to delete this event?")) {
@@ -61,11 +63,16 @@ const EventDetails = (props) => {
                 </div>
               </>
             )}
-            <div className="text-center">
+                        {currentUser && (
+                          <>
+              <div className="text-center">
               <Button variant="danger" as={Link} to={`/events/${id}/signup`}>
                 Sign Up
               </Button>
-            </div>
+              </div>
+              </>
+            )}
+          
           </Card.Body>
         </Card>
       </Col>
