@@ -76,12 +76,20 @@ function EventSignUp() {
   return (
     <div className="signUp">
       {signedUp && showAlert && (
-        <Alert variant="success" dismissible onClose={() => setShowAlert(false)}>
+        <Alert
+          variant="success"
+          dismissible
+          onClose={() => setShowAlert(false)}
+        >
           You have successfully signed up for {eventDetails.event_name}.
         </Alert>
       )}
       {alreadySignedUp && showAlert && (
-        <Alert variant="warning" dismissible onClose={() => setShowAlert(false)}>
+        <Alert
+          variant="warning"
+          dismissible
+          onClose={() => setShowAlert(false)}
+        >
           You have already signed up for {eventDetails.event_name}.
         </Alert>
       )}
