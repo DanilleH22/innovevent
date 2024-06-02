@@ -50,7 +50,7 @@ function EventCreateForm() {
     formData.append("event_name", event_name);
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("date", date);
+    formData.append("date", new Date(date).toISOString());
 
     try {
       const { data } = await axiosReq.post("/events/create/", formData);
@@ -112,7 +112,7 @@ function EventCreateForm() {
                 ))}
               <Form.Label htmlFor="date">Date:</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 name="date"
                 value={date}
                 onChange={handleChange}
