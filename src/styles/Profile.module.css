@@ -1,0 +1,6 @@
+.eventCard {
+    height: 400px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+}
