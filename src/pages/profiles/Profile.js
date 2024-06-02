@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Form, Alert, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { axiosReq } from '../../api/axiosDefaults'; 
+import { axiosReq } from "../../api/axiosDefaults";
+import styles from "../../styles/Profile.module.css";
 
 function Profile() {
   const { id } = useParams();
@@ -88,11 +89,18 @@ function Profile() {
       <h2>My Signed-Up Events</h2>
       {errors && <Alert variant="danger">{errors}</Alert>}
       <Row>
-        {profile.is_owner && profile.signed_up_events && profile.signed_up_events.length > 0 ? (
+        {profile.is_owner &&
+        profile.signed_up_events &&
+        profile.signed_up_events.length > 0 ? (
           profile.signed_up_events.map((event) => (
-            <Col key={event.id} md={4}>
-              <Card className="mb-4">
-                <Card.Img variant="top" src={event.image} alt={event.event_name} />
+            <Col key={event.id} md={4} className="my-4">
+              <Card className="h-100">
+                <Card.Img
+                  variant="top"
+                  src={event.image}
+                  alt={event.event_name}
+                  className={styles.eventCard}
+                />
                 <Card.Body>
                   <Card.Title>{event.event_name}</Card.Title>
                   <Card.Text>Description: {event.description}</Card.Text>
@@ -105,7 +113,7 @@ function Profile() {
           <Col>
             <Alert variant="warning">No signed up events found.</Alert>
           </Col>
-        )} 
+        )}
       </Row>
     </>
   );
