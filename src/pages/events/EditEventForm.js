@@ -1,16 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Row, Col, Container, Form, Button, Alert, Image } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Form,
+  Button,
+  Alert,
+  Image,
+} from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 
 /**
-   * Populate CreateForm data for editing and deleting
-   */
+ * Populate CreateForm data for editing and deleting
+ */
 function EditCreateForm() {
-
   const { id } = useParams();
   const history = useHistory();
   const [errors, setErrors] = useState({});
+  const currentDate = new Date
+  const formattedDate = currentDate.toISOString().slice(0, 16);
   const [editEventData, setEditEventData] = useState({
     event_name: "",
     description: "",
@@ -18,6 +27,7 @@ function EditCreateForm() {
     date: "",
   });
   const { event_name, description, image, date } = editEventData;
+  
 
   const imageInput = useRef(null);
 
@@ -32,8 +42,8 @@ function EditCreateForm() {
         setEditEventData({
           event_name: data.event_name,
           description: data.description,
+          date: data.date ? new Date(data.date).toISOString().slice(0, 16) : "",
           image: data.image,
-          date: data.date
         });
       } catch (err) {
         console.log(err);
@@ -59,7 +69,7 @@ function EditCreateForm() {
     }
   };
   /**
-   * Submit data on editing form 
+   * Submit data on editing form
    */
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -67,11 +77,10 @@ function EditCreateForm() {
 
     formData.append("event_name", event_name);
     formData.append("description", description);
-    formData.append("date", date);
+    formData.append("date", new Date(date).toISOString());
     if (imageInput.current.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
-
 
     try {
       await axiosReq.put(`/events/${id}/`, formData);
@@ -89,14 +98,13 @@ function EditCreateForm() {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {
         await axiosReq.delete(`/events/${id}/`);
-        history.push('/');
+        history.push("/");
       } catch (err) {
         console.error("Error deleting event", err);
         setErrors(err.response?.data);
       }
     }
   };
-  
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -142,10 +150,10 @@ function EditCreateForm() {
                 ))}
               <Form.Label htmlFor="date">Date:</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 name="date"
                 id="date"
-                value={date}
+                value={formattedDate}
                 onChange={handleChange}
               />
               {errors.date &&
@@ -169,9 +177,19 @@ function EditCreateForm() {
                 ))}
             </Form.Group>
             <div className="text-center">
-              <Button variant="danger" onClick={() => history.goBack()} className="mr-3">Cancel</Button>
-              <Button type="submit" variant="danger">Save Changes</Button>
-              <Button variant="danger" onClick={deleteEvent} className="ml-3">Delete</Button>
+              <Button
+                variant="danger"
+                onClick={() => history.goBack()}
+                className="mr-3"
+              >
+                Cancel
+              </Button>
+              <Button type="submit" variant="danger">
+                Save Changes
+              </Button>
+              <Button variant="danger" onClick={deleteEvent} className="ml-3">
+                Delete
+              </Button>
             </div>
           </Container>
         </Col>
