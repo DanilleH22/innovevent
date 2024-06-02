@@ -6,7 +6,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 /**
- * Create a event and push to API
+ * Create an event and push to API
  */
 function EventCreateForm() {
   useRedirect("loggedOut");
@@ -114,7 +114,6 @@ function EventCreateForm() {
               <Form.Control
                 type="date"
                 name="date"
-                id="date"
                 value={date}
                 onChange={handleChange}
               />
@@ -124,14 +123,12 @@ function EventCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              {/* <Form.Label htmlFor="image">Upload a image:</Form.Label> */}
               <Form.File
                 id="FormControlFile"
                 accept="image/*"
                 label="Upload an Image:"
                 ref={imageInput}
                 onChange={handleChangeImage}
-                
               />
               {errors.image &&
                 Array.isArray(errors.image) &&
