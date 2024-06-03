@@ -155,25 +155,131 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 ![Sign-up](src/assets/readme/sign-up-auth.png)
 
 ### Features Left to Implement:
-- See events signed up for in profile
-- See events created in profile
+- Link to other profiles 
 - Add pictures to the profile
 - Organisers can put a video instaed of photo as the thumbnail
 - Add social media links for footer
 
 ## Testing
 
+### Responsiveness Testing
+
+**TEST** | **SITE SIZE** | **EXPECTATION** | **RESULT** 
+----------|----------|----------|----------
+Home page	| Sizes to 420px - 1600px	| Elements look good @ 320px and up to 1600px | Works as expected
+Edit page	| Sizes to 420px - 1600px | Elements look good @ 320px and up to 1600px | Works as expected
+Contact form | Sizes to 420px - 1600px  | Elements look good @ 320px and up to 1600px  | Works as expected
+Delete page | Sizes to 420px - 1600px  | Elements look good @ 320px and up to 1600px  | Works as expected
+Create page	| Sizes to 420px - 1600px	| Elements look good @ 320px and up to 1600px | Works as expected
+Events page	| Sizes to 420px - 1600px | Elements look good @ 320px and up to 1600px | Works as expected
+Events Details page | Sizes to 420px - 1600px  | Elements look good @ 320px and up to 1600px  | Works as expected
+Profile page | Sizes to 420px - 1600px  | Elements look good @ 320px and up to 1600px  | Works as expected
+Sign-in page	| Sizes to 420px - 1600px	| Elements look good @ 320px and up to 1600px | Works as expected
+Sign-up page	| Sizes to 420px - 1600px | Elements look good @ 320px and up to 1600px | Works as expected
+
+### FEATURES
+
+| **TEST**                      | **ACTION**             | **EXPECTATION**                                           | **RESULT** |
+| ----------------------------- | ---------------------- | --------------------------------------------------------- | ---------- |
+| Navigation bar                | Click on nav link      | user routed to correct page                               | ✅         |
+| Edit button                   | Click edit button      | user navigated to edit screen                             | ✅         |
+| Delete button                 | Click delete button    | user is navigated to are you sure and deletes                               | ✅         |
+| Internal links                | Click link             | User routed to appropriate page                           | ✅         |
+| Login                         | User logs in           | UI updates & user is logged in                            | ✅         |
+| Sign up                       | User signs up          | new account created for the user                          | ✅         |
+| Logout                        | User clicks logout     | UI updates, user is logged out, user cannot create a book or read a book | ✅         |
+
+
 ### Manual Testing:
-1. Test users can sign up for an account.
-2. Test users can sign out
-3. Test users can sign in if they have already created a account.
-4. Events page can be viewed when not logged in but if you want to sign up you are redirected to the sign in page
-4. Contact us form works even if not signed in and signed in.
-5. Only logged in users can create a event.
-6. Only the owner of the event can edit or delete the event.
-7. Only the profile owner can update their biography.
-8. All nav links open to the correct page.
-9. CRUD functionality has been tested for Events
+A manual test had been used. I have used a BDD approach as this is a good way to test the results of a users behaviour. It won't return anything but is based of users behaviour.
+
+Test case 1: Events page can be viewed when not logged in can’t see sign up unless logged in
+Steps to reproduce:
+- Open website 
+- Go to Events tab in the navigation bar 
+- Scroll through books and can not see sign-up button 
+- Then log in and go back to events tab
+- Click sign-up on event that account hasn’t created
+Expected results: Sign-up button should be hidden when not logged in
+Results: As expected when not logged in the sign up button does not appear and appears when signed in.
+Pass/Fail : Pass
+Date: 2.06.2024
+Tester’s name: Danille Hamilton
+
+Test case 2: Contact form works whether signed in or signed out
+Steps to reproduce:
+- Open website without logging in
+- Go to contact us page through navigation bar
+- Fill out form
+- Submit form
+- Log in to account
+- Go to contact us page through navigation bar
+- Fill out form
+- Submit form
+Expected results: Form should fill out whether signed in or out 
+Results: As expected the for, had filled out whether the user was signed in or not.
+Pass/Fail : Pass
+Date: 2.06.2024
+Tester’s name: Danille Hamilton
+
+Test case 3: Only logged in user can create a event, if users are not logged in they are redirected to log in 
+Step to reproduce:
+- Open website
+- Click sign in and log in
+- Click ‘create event’ page in navigation
+- Create event form and submit 
+- Log out of account 
+- Click ‘create event’ page in navigation
+- Users should be redirected to sign up page
+Expected Results: Users are redirected when not logged in 
+Results: As expected users were redirected when not logged in and when logged in it has been complete 
+- Pass/Fail : Pass
+- Date: 2.06.2024
+- Tester’s name: Danille Hamilton
+
+Test case 4: Only the owner of the event can update or delete the event
+Step to reproduce:
+- Open website
+- Click sign in and log in
+- Click profile and then the edit button
+- Change event details and click save changes
+- After submission click edit again
+- Click the delete button
+- Users should be redirected to homepage
+Expected Results: Users can not even see the button to deletee or edit event button 
+Results: As expected users can not even see the button to deletee or edit event button 
+- Pass/Fail : Pass
+- Date: 2.06.2024
+- Tester’s name: Danille Hamilton
+
+Test case 5: Only the profile owner can update their biography, otherwise the button does not show
+Step to reproduce:
+- Open website
+- Click sign in and log in
+- Click profile and then the click edit button
+- Update biography paragraph
+- Click submit 
+Expected Results: Only the profile owner can update their biography, otherwise the button does not show
+Results: Only see the button to edit the biography for the owner
+- Pass/Fail : Pass
+- Date: 2.06.2024
+- Tester’s name: Danille Hamilton
+
+Test case 6: Users can sign in and must fill out all the fields
+Step to reproduce:
+- Open website
+- Click sign in and log in
+- Click events tab
+- Click on a event which has not been created by the current user 
+- Click sign up
+- Type in name and email
+- Logged out of the account 
+- Type in url links, should be redirected to sign. up 
+Expected Results: Users can sign in and must fill out all the fields
+Results: Sign up has been conmpleted along with checks it can only be viewed logged in
+- Pass/Fail : Pass
+- Date: 2.06.2024
+- Tester’s name: Danille Hamilton
 
 
 ### Validator Testing
@@ -187,7 +293,6 @@ All fonts were obtained from the Google Fonts library. I chose the following fon
 
 4. Tested the site opens in Brave, Chrome, Safari & on a mobile device without issues.
 
-5. All social links open to external pages as intended.
 
 ### Unfixed Bugs
 
