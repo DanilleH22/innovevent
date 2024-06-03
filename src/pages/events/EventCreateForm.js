@@ -114,6 +114,7 @@ function EventCreateForm() {
               <Form.Control
                 type="datetime-local"
                 name="date"
+                id="date"
                 value={date}
                 onChange={handleChange}
               />
