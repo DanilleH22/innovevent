@@ -15,10 +15,10 @@ function Profile() {
     const fetchProfile = async () => {
       try {
         const { data } = await axiosReq.get(`/profiles/${id}/`);
-        console.log("Profile data received from backend:", data);
+        
         setProfile(data);
       } catch (error) {
-        console.error("Error fetching profile", error);
+        
         setErrors("Error fetching profile");
       }
     };

@@ -26,7 +26,6 @@ function Events({ filter = "" }) {
         const { data } = await axiosReq.get(
           `/events?${filter}&search=${query}&page=${currentPage}`
         );
-        console.log(data);
         setEvents(data);
         setTotalPages(data.total_pages);
         setHasLoaded(true);

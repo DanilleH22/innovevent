@@ -15,7 +15,7 @@ function EventsDetail() {
           axiosReq.get(`/events/${id}`),
         ]);
         setEventDetails({ results: [eventDetails] });
-        console.log(eventDetails);
+        
       } catch (err) {
         console.log(err);
       }
