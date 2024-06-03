@@ -25,7 +25,6 @@ function EditCreateForm() {
     date: "",
   });
   const { event_name, description, image, date } = editEventData;
-  
 
   const imageInput = useRef(null);
 
@@ -106,8 +105,8 @@ function EditCreateForm() {
 
   return (
     <Row>
-    <Form onSubmit={handleSubmit}>
-        <Col className="m-4 p-4">
+      <Col className="m-4 p-4">
+        <Form onSubmit={handleSubmit}>
           <Container className="d-flex flex-column justify-content-center text-center">
             <h1>Edit {event_name}</h1>
             {image && (
@@ -190,8 +189,8 @@ function EditCreateForm() {
               </Button>
             </div>
           </Container>
-        </Col>
-    </Form>
+        </Form>
+      </Col>
     </Row>
   );
 }
