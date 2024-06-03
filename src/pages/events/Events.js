@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import { Row, Col, Container, Spinner, Form } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import EventDetails from "./EventDetails";
+import Pagination from "../../components/Pagination"
 
 /**
    * List event details on page 
@@ -12,8 +13,9 @@ function Events({ filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
-
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   /**
    * Fetech events based on name - search
@@ -22,10 +24,11 @@ function Events({ filter = "" }) {
     const fetchEvents = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/events?${filter}&search=${query}`,
+          `/events?${filter}&search=${query}&page=${currentPage}`
         );
         console.log(data);
         setEvents(data);
+        setTotalPages(data.total_pages);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -38,7 +41,11 @@ function Events({ filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, currentPage]);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <Row className="justify-content-center">
@@ -57,6 +64,7 @@ function Events({ filter = "" }) {
 
       {hasLoaded ? (
         events.results.length ? (
+          <>
           <Row className="w-100 justify-content-center">
             {events.results.map((event) => (
               <Col
@@ -67,10 +75,19 @@ function Events({ filter = "" }) {
                 xs={12}
                 className="mb-4 d-flex align-items-stretch"
               >
-                    <EventDetails {...event} setEvents={setEvents} />
+                <EventDetails {...event} setEvents={setEvents} />
               </Col>
             ))}
+            
           </Row>
+          <Row>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </Row>
+          </>
         ) : (
           <Container className="text-center">
             <p>
