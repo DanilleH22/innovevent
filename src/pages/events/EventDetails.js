@@ -30,7 +30,7 @@ const EventDetails = (props) => {
 
   return (
     <Row>
-      <Col md={3} className="mb-4">
+      <Col md={6} sm={8} lg={4} xs={12}className="mb-4">
         <Card style={{ width: "18rem" }} className="h-100">
           <Card.Img
             variant="top"

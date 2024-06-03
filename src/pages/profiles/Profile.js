@@ -91,7 +91,7 @@ function Profile() {
       <Row>
         {profile.owned_events && profile.owned_events.length > 0 ? (
           profile.owned_events.map((events) => (
-            <Col key={events.id} md={4} className="my-4">
+            <Col key={events.id} md={6} className="my-4">
               <Card className="h-100">
                 <Card.Img
                   variant="top"
@@ -137,7 +137,7 @@ function Profile() {
         profile.signed_up_events &&
         profile.signed_up_events.length > 0 ? (
           profile.signed_up_events.map((event) => (
-            <Col key={event.id} md={4} className="my-4">
+            <Col key={event.id} xs={12} sm={8} md={6} lg={4} className="my-4">
               <Card className="h-100">
                 <Card.Img
                   variant="top"
