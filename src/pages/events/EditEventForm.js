@@ -176,7 +176,7 @@ function EditCreateForm() {
                   </Alert>
                 ))}
             </Form.Group>
-            <div className="text-center">
+            <div className="text-center mt-3">
               <Button
                 variant="danger"
                 onClick={() => history.goBack()}
