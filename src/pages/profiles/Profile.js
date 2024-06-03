@@ -3,6 +3,7 @@ import { Button, Card, Form, Alert, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Profile.module.css";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const { id } = useParams();
@@ -86,6 +87,49 @@ function Profile() {
           )}
         </Card.Body>
       </Card>
+      <h2>Events created </h2>
+      <Row>
+        {profile.owned_events && profile.owned_events.length > 0 ? (
+          profile.owned_events.map((events) => (
+            <Col key={events.id} md={4} className="my-4">
+              <Card className="h-100">
+                <Card.Img
+                  variant="top"
+                  src={events.image}
+                  alt={events.event_name}
+                  className={styles.eventCard}
+                />
+                <Card.Body>
+                  <Card.Title>{events.event_name}</Card.Title>
+                  <Card.Text>Description: {events.description}</Card.Text>
+                  <Card.Text>Event date: {events.date}</Card.Text>
+                  {profile.is_owner && (
+                    <>
+                      <div className="text-center">
+                        <Button
+                          variant="danger"
+                          as={Link}
+                          to={`/events/${events.id}/edit`}
+                          className="mr-1 mb-2"
+                        >
+                          Edit
+                        </Button>
+                      </div>
+                    </>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+        ) : (
+          <Col>
+            <Alert variant="warning">
+              This user has not created any events yet.
+            </Alert>
+          </Col>
+        )}
+      </Row>
+
       <h2>My Signed-Up Events</h2>
       {errors && <Alert variant="danger">{errors}</Alert>}
       <Row>
