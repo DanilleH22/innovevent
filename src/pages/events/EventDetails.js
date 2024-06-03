@@ -73,6 +73,14 @@ const EventDetails = (props) => {
                   >
                     Sign Up
                   </Button>
+                  <Button 
+                  variant="danger"
+                  as={Link}
+                  to={`/events/${id}`}
+                  className="ml-3"
+                  >
+                    More
+                  </Button>
                 </div>
               </>
             )}
