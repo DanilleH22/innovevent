@@ -18,8 +18,6 @@ function EditCreateForm() {
   const { id } = useParams();
   const history = useHistory();
   const [errors, setErrors] = useState({});
-  const currentDate = new Date
-  const formattedDate = currentDate.toISOString().slice(0, 16);
   const [editEventData, setEditEventData] = useState({
     event_name: "",
     description: "",
@@ -42,7 +40,7 @@ function EditCreateForm() {
         setEditEventData({
           event_name: data.event_name,
           description: data.description,
-          date: data.date ? new Date(data.date).toISOString().slice(0, 16) : "",
+          date: data.date,
           image: data.image,
         });
       } catch (err) {
@@ -77,7 +75,7 @@ function EditCreateForm() {
 
     formData.append("event_name", event_name);
     formData.append("description", description);
-    formData.append("date", new Date(date).toISOString());
+    formData.append("date", date);
     if (imageInput.current.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
@@ -153,7 +151,7 @@ function EditCreateForm() {
                 type="datetime-local"
                 name="date"
                 id="date"
-                value={formattedDate}
+                value={date}
                 onChange={handleChange}
               />
               {errors.date &&
