@@ -107,8 +107,8 @@ function EditCreateForm() {
   };
 
   return (
+    <Row>
     <Form onSubmit={handleSubmit}>
-      <Row>
         <Col className="m-4 p-4">
           <Container className="d-flex flex-column justify-content-center text-center">
             <h1>Edit {event_name}</h1>
@@ -193,8 +193,8 @@ function EditCreateForm() {
             </div>
           </Container>
         </Col>
-      </Row>
     </Form>
+    </Row>
   );
 }
 
